@@ -1,0 +1,72 @@
+//insert an interger into a sorted array, after which it is still sorted
+
+
+
+package experiment.chapter02;
+import java.util.Scanner;
+import java.util.Arrays;
+import java.util.Random;
+
+public class Example2_01 {
+    public static void main(String args[]) {
+    	int n,m,a[];
+    	Scanner reader=new Scanner(System.in);
+    	n=reader.nextInt();
+    	System.out.println("n has inputted");
+    	m=reader.nextInt();
+    	System.out.println("m has inputted");
+    	a=new int[m+1];
+    	bi(a,n,m);
+    	
+    }
+    private static void bi(int a[],int n,int m) {
+    	getElements(a,n,m);
+    	System.out.println("getElements finished.");
+    	int end=m-1;
+    	int beg=0;
+    	int mid=beg+(end-beg)/2;
+    	while(mid!=end&&a[mid]!=n) {
+    		if(n<a[mid])
+    			end=mid;
+    		else
+    			beg=mid+1;
+    		mid=beg+(end-beg)/2;
+    	}
+    	if(a[mid]<=n) {
+    		move(mid+2,a,m);
+    		a[mid+1]=n;
+    	}
+    	else
+    	{
+    		move(mid+1,a,m);
+    		a[mid]=n;
+    	}
+    	
+    	System.out.println("final output:");
+    	for(int i=0;i<a.length;i++)
+    	{
+    		System.out.printf("%4d", a[i]);
+    	}
+    }
+    private static void move(int tmp2,int a[],int m) {
+    	int i;
+    	for(i=m;i>=tmp2;i--)
+    	{
+    		a[i]=a[i-1];
+    	}
+    }
+   
+    private static void getElements(int a[],int n,int m) {
+        Random rand=new Random();
+        for(int i=0;i<m;i++) {
+        	a[i]=rand.nextInt(100);
+        	Arrays.sort(a);
+        }
+        System.out.println("after sorted:");
+        for(int i=0;i<m;i++)
+        {
+        	System.out.printf("%4d ",a[i]);
+        }
+    }
+   
+}
