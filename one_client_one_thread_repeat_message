@@ -91,15 +91,16 @@ public class ClientUI extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("宋体", 1, 16)); // NOI18N
         jLabel3.setText("待发送消息：");
 
-        int n = Integer.parseInt(inputField.getText());
+       
         txtInput.setFont(new java.awt.Font("宋体", 1, 16)); // NOI18N
         txtInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-            	int newn2=n;
-            	while(newn2>0)
+            	 int n = Integer.parseInt(inputField.getText());
+            	
+            	while(n>0)
             	{
                 txtInputActionPerformed(evt);
-                newn2=newn2-1;
+                n=n-1;
             	}
             }
         });
@@ -110,12 +111,13 @@ public class ClientUI extends javax.swing.JFrame {
         
         
         		 public void actionPerformed(java.awt.event.ActionEvent evt) {
-        			int newn=n;
-        			while(newn>0)
+        			 int n = Integer.parseInt(inputField.getText());
+        			
+        			while(n>0)
         			{
         				 
                      btnSpeakActionPerformed(evt);
-                     newn=newn-1;
+                     n=n-1;
         			}
         			 txtInput.setText("");
                     
@@ -327,7 +329,6 @@ public class ClientUI extends javax.swing.JFrame {
     private javax.swing.JTextField txtRemotePort;
     // End of variables declaration//GEN-END:variables
 }
-
 
 //ServerUI.java
 package tmp;
